@@ -1,0 +1,37 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>GROUPS</ion-title>    
+</ion-navbar>
+<ion-content>
+    <!--<button>
+        <ion-icon name="contact" (click)="createMember()" end></ion-icon>
+    </button> -->
+    <button outline item-right (click)="createMember()">
+        <ion-icon name="ion-person-add"></ion-icon>
+        Add Member
+    </button>
+
+    <ion-card *ngFor="let item of memberList | async" class="speaker">
+        <ion-card-header>            
+            <ion-item>
+                {{item.group.name}}
+                <button outline item-right (click)="addMember(item.group.id)">
+                    <ion-icon name="ion-person-add"></ion-icon>
+                    Add Member
+                </button>
+            </ion-item>
+        </ion-card-header>
+        <ion-card-content class="outer-content">
+            <ion-list *ngFor="let m of item.members">
+                <ion-item>                            
+                    <h2>{{m.member.username}}</h2>
+                    <p>{{m.status}}</p>
+                    <p>{{m.role}}</p>
+                </ion-item>
+            </ion-list>        
+        </ion-card-content>
+    </ion-card>    
+</ion-content>
+

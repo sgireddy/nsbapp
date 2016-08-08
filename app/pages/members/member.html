@@ -1,0 +1,19 @@
+<ion-navbar *navbar>
+    <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+    <ion-title>Search Members</ion-title>
+</ion-navbar>
+<ion-content class="login-page">
+    <ion-searchbar primary [ngFormControl]="term" placeholder="Search">
+    </ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let item of items | async">
+            <h2>{{item.username}}</h2>
+            <p>{{item.firstname}} {{item.lastname}}</p>
+            <button (click)="addToGroup(item.id)" outline item-right>
+                <ion-icon name="contact"></ion-icon>
+            </button>
+        </ion-item>
+    </ion-list>
+</ion-content>
